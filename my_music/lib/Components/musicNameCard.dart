@@ -14,38 +14,35 @@ class MusicNameCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      margin: const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 0),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-      child: Container(
-        // height: 100,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          color: Colors.blueGrey
+    return Container(
+      decoration: BoxDecoration(
+        color: const Color(0xFF3A3A3A),
+        borderRadius: BorderRadius.circular(12),
+        image: DecorationImage(
+          image: AssetImage(imagePath),
+          fit: BoxFit.cover,
         ),
-        child: Stack(
-          children: [
-            Positioned(
-              bottom: 10,
-              left: 10,
-              child: Text(
+      ),
+      child: Align(
+        alignment: Alignment.bottomCenter,
+        child: Container(
+          color: Colors.black54,
+          padding: const EdgeInsets.all(4),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
                 title,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: const TextStyle(color: Colors.white, fontSize: 14),
+                overflow: TextOverflow.ellipsis,
               ),
-            ),
-            Positioned(
-              bottom: 10,
-              right: 10,
-              child: Text(
+              Text(
                 artist,
-                style: const TextStyle(color: Colors.white, fontSize: 16),
+                style: const TextStyle(color: Colors.grey, fontSize: 12),
+                overflow: TextOverflow.ellipsis,
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
