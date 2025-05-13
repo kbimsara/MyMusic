@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_music/Pages/folderPage.dart';
 import 'package:my_music/Pages/homePage.dart';
 
 void main() {
@@ -12,7 +13,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'My Music',
       home: const HomePage(),
     );
   }
