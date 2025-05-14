@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_music/Pages/folderPage.dart';
 import 'package:my_music/Pages/playerPage.dart';
+import 'package:my_music/Pages/youtubePage.dart';
 
 void main() {
   runApp(const HomePage());
@@ -147,30 +148,50 @@ class HomePage extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Container(
-                    margin: const EdgeInsets.only(top: 40),
-                    height: 70,
-                    width: 122.94,
-                    padding: const EdgeInsets.all(25.0),
-                    decoration: BoxDecoration(
-                      image: const DecorationImage(
-                        image: AssetImage('assets/images/images2.png'),
-                        fit: BoxFit.cover,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const FolderPage(),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      margin: const EdgeInsets.only(top: 40),
+                      height: 70,
+                      width: 122.94,
+                      padding: const EdgeInsets.all(25.0),
+                      decoration: BoxDecoration(
+                        image: const DecorationImage(
+                          image: AssetImage('assets/images/images2.png'),
+                          fit: BoxFit.cover,
+                        ),
+                        borderRadius: BorderRadius.circular(10),
                       ),
-                      borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-                  Container(
-                    margin: const EdgeInsets.only(top: 40),
-                    height: 70,
-                    width: 122.94,
-                    padding: const EdgeInsets.all(25.0),
-                    decoration: BoxDecoration(
-                      image: const DecorationImage(
-                        image: AssetImage('assets/images/images3.jpg'),
-                        fit: BoxFit.cover,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const YoutubePage(),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      margin: const EdgeInsets.only(top: 40),
+                      height: 70,
+                      width: 122.94,
+                      padding: const EdgeInsets.all(25.0),
+                      decoration: BoxDecoration(
+                        image: const DecorationImage(
+                          image: AssetImage('assets/images/images3.jpg'),
+                          fit: BoxFit.cover,
+                        ),
+                        borderRadius: BorderRadius.circular(10),
                       ),
-                      borderRadius: BorderRadius.circular(10),
                     ),
                   ),
                 ],
@@ -179,7 +200,7 @@ class HomePage extends StatelessWidget {
             Container(
               margin: const EdgeInsets.only(top: 15),
               padding: const EdgeInsets.all(10),
-              height: MediaQuery.of(context).size.height*0.77,
+              height: MediaQuery.of(context).size.height * 0.77,
               width: double.infinity,
               decoration: BoxDecoration(
                 color: const Color(0xFF272727),
@@ -217,7 +238,7 @@ class HomePage extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => PlayerPage(song: song,),
+                                builder: (context) => PlayerPage(song: song),
                               ),
                             );
                           },
