@@ -16,131 +16,152 @@ class HomePage extends StatelessWidget {
       'title': 'Song Title 1',
       'artist': 'Artist 1',
       'image': 'assets/images/images1.jpg',
+      'path':'assets/music/tt.mp3', // or FilePicker result
     },
     {
       'title': 'Song Title 2',
       'artist': 'Artist 2',
       'image': 'assets/images/images2.png',
+      'path':'assets/music/tt.mp3', // or FilePicker result
     },
     {
       'title': 'Song Title 3',
       'artist': 'Artist 3',
       'image': 'assets/images/images3.jpg',
+      'path':'assets/music/tt.mp3', // or FilePicker result
     },
     {
       'title': 'Song Title 4',
       'artist': 'Artist 4',
       'image': 'assets/images/images1.jpg',
+      'path':'assets/music/tt.mp3', // or FilePicker result
     },
     {
       'title': 'Song Title 5',
       'artist': 'Artist 5',
       'image': 'assets/images/images2.png',
+      'path':'assets/music/tt.mp3', // or File
     },
     {
       'title': 'Song Title 6',
       'artist': 'Artist 6',
       'image': 'assets/images/images3.jpg',
+      'path':'assets/music/tt.mp3', // or FilePicker result
     },
     {
       'title': 'Song Title 4',
       'artist': 'Artist 4',
       'image': 'assets/images/images1.jpg',
+      'path':'assets/music/tt.mp3', // or FilePicker result
     },
     {
       'title': 'Song Title 5',
       'artist': 'Artist 5',
       'image': 'assets/images/images2.png',
+      'path':'assets/music/tt.mp3', // or File
     },
     {
       'title': 'Song Title 6',
       'artist': 'Artist 6',
       'image': 'assets/images/images3.jpg',
+      'path':'assets/music/tt.mp3', // or FilePicker result
     },
     {
       'title': 'Song Title 4',
       'artist': 'Artist 4',
       'image': 'assets/images/images1.jpg',
+      'path':'assets/music/tt.mp3', // or FilePicker result
     },
     {
       'title': 'Song Title 5',
       'artist': 'Artist 5',
       'image': 'assets/images/images2.png',
+      'path':'assets/music/tt.mp3', // or File
     },
     {
       'title': 'Song Title 6',
       'artist': 'Artist 6',
       'image': 'assets/images/images3.jpg',
+      'path':'assets/music/tt.mp3', // or FilePicker result
     },
     {
       'title': 'Song Title 4',
       'artist': 'Artist 4',
       'image': 'assets/images/images1.jpg',
+      'path':'assets/music/tt.mp3', // or FilePicker result
     },
     {
       'title': 'Song Title 5',
       'artist': 'Artist 5',
       'image': 'assets/images/images2.png',
+      'path':'assets/music/tt.mp3', // or File
     },
     {
       'title': 'Song Title 6',
       'artist': 'Artist 6',
       'image': 'assets/images/images3.jpg',
+      'path':'assets/music/tt.mp3', // or FilePicker result
     },
     {
       'title': 'Song Title 4',
       'artist': 'Artist 4',
       'image': 'assets/images/images1.jpg',
+      'path':'assets/music/tt.mp3', // or FilePicker result
     },
     {
       'title': 'Song Title 5',
       'artist': 'Artist 5',
       'image': 'assets/images/images2.png',
+      'path':'assets/music/tt.mp3', // or File
     },
     {
       'title': 'Song Title 6',
       'artist': 'Artist 6',
       'image': 'assets/images/images3.jpg',
+      'path':'assets/music/tt.mp3', // or FilePicker result
     },
     {
       'title': 'Song Title 4',
       'artist': 'Artist 4',
       'image': 'assets/images/images1.jpg',
+      'path':'assets/music/tt.mp3', // or FilePicker result
     },
     {
       'title': 'Song Title 5',
       'artist': 'Artist 5',
       'image': 'assets/images/images2.png',
+      'path':'assets/music/tt.mp3', // or File
     },
     {
       'title': 'Song Title 6',
       'artist': 'Artist 6',
       'image': 'assets/images/images3.jpg',
+      'path':'assets/music/tt.mp3', // or FilePicker result
     },
     {
       'title': 'Song Title 4',
       'artist': 'Artist 4',
       'image': 'assets/images/images1.jpg',
+      'path':'assets/music/tt.mp3', // or FilePicker result
     },
     {
       'title': 'Song Title 5',
       'artist': 'Artist 5',
       'image': 'assets/images/images2.png',
+      'path':'assets/music/tt.mp3', // or File
     },
     {
       'title': 'Song Title 6',
       'artist': 'Artist 6',
       'image': 'assets/images/images3.jpg',
+      'path':'assets/music/tt.mp3', // or FilePicker result
     },
     // Add more as needed
   ];
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(scaffoldBackgroundColor: const Color(0xFF191A19)),
-      home: Scaffold(
+    return Scaffold(
         body: Column(
           children: [
             SizedBox(
@@ -314,6 +335,7 @@ class HomePage extends StatelessWidget {
             ),
           ],
         ),
+
         //Navigation bar
         bottomNavigationBar: BottomNavigationBar(
           backgroundColor: const Color(0xFF191A19),
@@ -337,7 +359,6 @@ class HomePage extends StatelessWidget {
             );
           },
         ),
-      ),
-    );
+      );
   }
 }
