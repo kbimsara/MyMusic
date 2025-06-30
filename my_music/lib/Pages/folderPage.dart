@@ -135,10 +135,8 @@ class FolderPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(scaffoldBackgroundColor: const Color(0xFF191A19)),
-      home: Scaffold(
+    return Scaffold(
+      backgroundColor: const Color(0xFF191A19),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -171,7 +169,7 @@ class FolderPage extends StatelessWidget {
             Container(
               margin: const EdgeInsets.only(top: 15),
               padding: const EdgeInsets.all(10),
-              height: MediaQuery.of(context).size.height * 0.78,
+              height: MediaQuery.of(context).size.height * 0.76,
               width: double.infinity,
               decoration: BoxDecoration(
                 color: const Color(0xFF272727),
@@ -310,7 +308,6 @@ class FolderPage extends StatelessWidget {
             );
           },
         ),
-      ),
     );
   }
 }

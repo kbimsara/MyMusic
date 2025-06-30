@@ -36,11 +36,14 @@ dependencies:
   cupertino_icons: ^1.0.8
   ionicons: ^0.2.2
   audioplayers_android: ^5.2.0
+  audioplayers: ^6.5.0
+  
+  just_audio: ^0.10.4
 
-  just_audio: ^0.9.37 # audio engine
-  audio_session: ^0.1.16 # handles “ducking” on calls/notifications
-  permission_handler: ^11.3.0 #storage permission (Android 13−) if you plan to browse files
-  rxdart: ^0.28.0
+  # on_audio_query: ^2.9.0      # latest as of May 2025 :contentReference[oaicite:0]{index=0}
+  # just_audio: ^0.9.40         # published 3 weeks ago :contentReference[oaicite:1]{index=1}
+  # permission_handler: ^11.3.0 # supports Android 13 READ_MEDIA_* perms :contentReference[oaicite:2]{index=2}
+  # audio_service: ^0.18.5      # only if you want background playback
 
 dev_dependencies:
   flutter_test:

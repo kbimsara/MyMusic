@@ -1,11 +1,56 @@
 import 'package:flutter/material.dart';
-import 'package:my_music/Pages/folderPage.dart';
-import 'package:my_music/Pages/homePage.dart';
+import 'package:just_audio/just_audio.dart';
 
-class PlayerPage extends StatelessWidget {
+class PlayerPage extends StatefulWidget {
   final Map<String, String> song;
 
   const PlayerPage({super.key, required this.song});
+
+  @override
+  State<PlayerPage> createState() => _PlayerPageState();
+}
+
+class _PlayerPageState extends State<PlayerPage> {
+  final AudioPlayer _player = AudioPlayer();
+
+  Duration _duration = Duration.zero;
+  Duration _position = Duration.zero;
+  bool _isPlaying = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _initPlayer();
+  }
+
+  Future<void> _initPlayer() async {
+    try {
+      // Load asset audio
+      await _player.setAudioSource(AudioSource.asset(widget.song['uri']!));
+
+      _player.play();
+
+      _player.durationStream.listen((d) {
+        if (d != null) setState(() => _duration = d);
+      });
+
+      _player.positionStream.listen((p) {
+        setState(() => _position = p);
+      });
+
+      _player.playerStateStream.listen((state) {
+        setState(() => _isPlaying = state.playing);
+      });
+    } catch (e) {
+      print("Error loading audio: $e");
+    }
+  }
+
+  @override
+  void dispose() {
+    _player.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,24 +67,22 @@ class PlayerPage extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          // Carousel or Album Art
+          // Album art
           Container(
-            height: MediaQuery.of(context).size.height*0.40,
+            height: MediaQuery.of(context).size.height * 0.4,
             margin: const EdgeInsets.symmetric(horizontal: 20),
             decoration: BoxDecoration(
               color: const Color(0xFF3A3A3A),
               borderRadius: BorderRadius.circular(12),
               image: DecorationImage(
-                image: AssetImage(song['image']!),
+                image: AssetImage(widget.song['image']!),
                 fit: BoxFit.cover,
               ),
             ),
           ),
           const SizedBox(height: 20),
-
-          // Song Title and Artist
           Text(
-            song['title'] ?? "Title",
+            widget.song['title']!,
             style: const TextStyle(
               color: Colors.white,
               fontSize: 20,
@@ -47,13 +90,10 @@ class PlayerPage extends StatelessWidget {
             ),
           ),
           Text(
-            song['artist'] ?? "Artist",
+            widget.song['artist']!,
             style: const TextStyle(color: Colors.white70, fontSize: 16),
           ),
-
           const SizedBox(height: 40),
-
-          // Player Controls
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 10),
             padding: const EdgeInsets.all(16),
@@ -63,16 +103,18 @@ class PlayerPage extends StatelessWidget {
             ),
             child: Column(
               children: [
-                // Slider
                 Slider(
-                  value: 0.7,
-                  onChanged: (value) {},
+                  value: _position.inSeconds.toDouble(),
+                  max: _duration.inSeconds.toDouble() > 0
+                      ? _duration.inSeconds.toDouble()
+                      : 1.0,
+                  onChanged: (value) {
+                    final pos = Duration(seconds: value.toInt());
+                    _player.seek(pos);
+                  },
                   activeColor: Colors.white,
                   inactiveColor: Colors.grey,
                 ),
-                const SizedBox(height: 10),
-
-                // Music Controls
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -83,10 +125,13 @@ class PlayerPage extends StatelessWidget {
                       onPressed: () {},
                     ),
                     IconButton(
-                      icon: const Icon(Icons.play_circle_fill),
+                      icon: Icon(
+                          _isPlaying ? Icons.pause_circle : Icons.play_circle_fill),
                       color: Colors.white,
                       iconSize: 50,
-                      onPressed: () {},
+                      onPressed: () {
+                        _isPlaying ? _player.pause() : _player.play();
+                      },
                     ),
                     IconButton(
                       icon: const Icon(Icons.skip_next),
@@ -99,53 +144,8 @@ class PlayerPage extends StatelessWidget {
               ],
             ),
           ),
-
-          const SizedBox(height: 20),
-
-          // Shuffle and Playlist icons
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              IconButton(
-                icon: const Icon(Icons.shuffle),
-                color: Colors.white70,
-                iconSize: 30,
-                onPressed: () {},
-              ),
-              IconButton(
-                icon: const Icon(Icons.playlist_play),
-                color: Colors.white70,
-                iconSize: 30,
-                onPressed: () {},
-              ),
-            ],
-          ),
         ],
       ),
-
-      //Navigation bar
-      // bottomNavigationBar: BottomNavigationBar(
-      //   backgroundColor: const Color(0xFF191A19),
-      //   items: const [
-      //     BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-      //     BottomNavigationBarItem(
-      //       icon: Icon(Icons.favorite),
-      //       label: 'Favourite',
-      //     ),
-      //   ],
-      //   currentIndex: 0,
-      //   selectedItemColor: Colors.white,
-      //   unselectedItemColor: Colors.grey,
-      //   showUnselectedLabels: true,
-      //   onTap: (index) {
-      //     // Handle navigation
-      //     List<Widget> pages = [const HomePage(), const FolderPage()];
-      //     Navigator.push(
-      //       context,
-      //       MaterialPageRoute(builder: (context) => pages[index]),
-      //     );
-      //   },
-      // ),
     );
   }
 }
