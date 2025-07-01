@@ -40,10 +40,8 @@ dependencies:
   
   just_audio: ^0.10.4
 
-  # on_audio_query: ^2.9.0      # latest as of May 2025 :contentReference[oaicite:0]{index=0}
-  # just_audio: ^0.9.40         # published 3 weeks ago :contentReference[oaicite:1]{index=1}
-  # permission_handler: ^11.3.0 # supports Android 13 READ_MEDIA_* perms :contentReference[oaicite:2]{index=2}
-  # audio_service: ^0.18.5      # only if you want background playback
+  permission_handler: ^11.3.0
+  # on_audio_query: ^2.9.0
 
 dev_dependencies:
   flutter_test:
