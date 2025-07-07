@@ -37,11 +37,13 @@ dependencies:
   ionicons: ^0.2.2
   audioplayers_android: ^5.2.0
   audioplayers: ^6.5.0
-  
+
   just_audio: ^0.10.4
 
   permission_handler: ^11.3.0
   # on_audio_query: ^2.9.0
+
+  on_audio_query: ^2.9.0  # for querying songs
 
 dev_dependencies:
   flutter_test:
